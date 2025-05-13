@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VerixAI - Medico-Legal Case Review | CorMetrix</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* VerixAI Page Specific Styles */
+        .verix-hero {
+            background-color: #fff;
+            padding: 80px 0;
+        }
+
+        .verix-hero .container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .verix-hero-content {
+            flex: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .verix-hero-content.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .verix-hero-image {
+            flex: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: 0.2s;
+        }
+
+        .verix-hero-image.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .verix-hero-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .verix-hero h1 {
+            font-size: 42px;
+                color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .verix-hero-title {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .purple-box {
+            background: linear-gradient(135deg, #9D4EDD, #6A0DAD);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .purple-box-content {
+            flex: 2;
+        }
+
+        .purple-box h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .purple-box p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+
+        .purple-accent {
+            flex: 1;
+            height: 100%;
+            background-color: #9D4EDD;
+            border-radius: 10px;
+            max-width: 100px;
+        }
+
+        .what-section {
+            padding: 60px 0;
+            background-color: #6A0DAD;
+            color: white;
+        }
+
+        .what-section h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .what-section p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .benefits-list {
+            margin-bottom: 40px;
+        }
+
+        .benefits-list li {
+            font-size: 18px;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .benefits-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #FFD166;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .what-section-content {
+            display: flex;
+            gap: 40px;
+        }
+
+        .what-section-text {
+            flex: 1;
+        }
+
+        .what-section-image {
+            flex: 1;
+        }
+
+        .what-section-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .features-section {
+            padding: 60px 0;
+            background-color: #fff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #F0F0F0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .feature-content h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .feature-content p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .feature-details {
+            background-color: #F8F8F8;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .feature-details h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .feature-details p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 400px;
+            background-color: #000;
+            border-radius: 15px;
+            margin-bottom: 60px;
+        }
+
+        .why-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .why-section h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: var(--text-color);
+        }
+
+        .why-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .why-card {
+            flex: 1;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+        }
+
+        .why-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .why-card:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .why-card:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+
+        .why-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .why-card p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .comparison-section {
+            padding: 60px 0;
+        }
+
+        .comparison-section h2 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .comparison-row {
+            display: contents;
+        }
+
+        .comparison-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .comparison-cell {
+            background-color: #F8F8F8;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .faq-section {
+            padding: 60px 0;
+            background-color: #f8f8f8;
+        }
+
+        .faq-section h2 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .faq-section h2 span {
+            color: var(--primary-color);
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+
+        .faq-question {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:after {
+            content: "+";
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .faq-question.active:after {
+            content: "-";
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px 0;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .verix-hero .container,
+            .what-section-content {
+                flex-direction: column;
+            }
+
+            .why-cards {
+                flex-direction: column;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-row {
+                display: grid;
+                grid-template-columns: 1fr;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+             <a href="index.html">
+            <div class="logo">
+                <img src="images/cormetrix-logo.jpg" alt="CorMetrix Logo">
+             
+            </div>
+              </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="platform.html">Platform</a>
+                        <span class="dropdown-arrow">▼</span>
+                        <div class="dropdown-menu">
+                            <a href="platform.html">Overview</a>
+                            <a href="platform.html#features">Features</a>
+                            <a href="platform.html#technology">Technology</a>
+                        </div>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#">Products</a>
+                        <span class="dropdown-arrow">▼</span>
+                        <div class="dropdown-menu">
+                            <a href="verixai.html" class="active">VerixAI</a>
+                            <a href="atriai.html">AtriAI</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="team.html">About Us</a>
+                        <span class="dropdown-arrow">▼</span>
+                        <div class="dropdown-menu">
+                            <a href="team.html">Meet the Team</a>
+                            <a href="team.html#mission">Our Mission</a>
+                            
+                        </div>
+                    </li>
+                    <li><a href="platform.html#why-section">Compliance</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+            <div class="cta-button">
+                <a href="#" class="btn btn-primary">Book a Demo <span class="arrow">→</span></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="verix-hero">
+            <div class="container">
+                <div class="verix-hero-content">
+                    <h1>VerixAI</h1>
+                    <div class="purple-box">
+                        <div class="purple-box-content">
+                            <h2>Cut Case Review Time Without Cutting Corners</h2>
+                            <p>VerixAI speeds up the medico-legal review process by extracting key information, organizing case files, and helping you review what matters—all while maintaining the highest standards of thoroughness.</p>
+                        </div>
+                        <div class="purple-accent"></div>
+                    </div>
+                </div>
+                <div class="verix-hero-image">
+                    <img src="images/legal-hammer.png" alt="Legal gavel and documents">
+                </div>
+            </div>
+        </section>
+
+        <section class="what-section">
+            <div class="container">
+                <h2>What VerixAI Helps You Do</h2>
+                <div class="what-section-content">
+                    <div class="what-section-text">
+                        <p>VerixAI transforms how legal teams handle medical evidence by automating document analysis, highlighting key clinical details, and organizing findings into clear, defensible reports.</p>
+
+                        <ul class="benefits-list">
+                            <li><strong>Extract key data points</strong> from large, disorganized case files</li>
+                            <li><strong>Auto-generate outlines</strong> for chronologies and summaries</li>
+                            <li><strong>Tag and annotate records</strong> with AI assistance</li>
+                            <li><strong>Build and export</strong> structured, source-linked reports</li>
+                        </ul>
+                    </div>
+                    <div class="what-section-image">
+                        <img src="images/laptop.png" alt="Legal professional reviewing documents">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <h2>Key Platform Features</h2>
+
+                <div class="platform-features-container">
+                    <div class="platform-image">
+                        <img src="images/verixaiplatform.png" alt="VerixAI Platform Interface" onerror="this.src='images/medico-legal.jpg'">
+                    </div>
+
+                    <div class="platform-features">
+                        <div class="platform-feature">
+                            <h3>Unified Cloud-Based Platform</h3>
+                            <p>Consolidates data and imaging into one unified platform with embedded viewers</p>
+                        </div>
+
+                        <div class="platform-feature">
+                            <h3>Automated Chronologies</h3>
+                            <p>Generates accurate medical chronologies that summarize and sequence relevant components of a case within minutes</p>
+                        </div>
+
+                        <div class="platform-feature">
+                            <h3>Natural Language Queries</h3>
+                            <p>Incorporates natural language questioning to gain case insights with included primary data source annotations</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="platform-workflow">
+                    <div class="workflow-item">
+                        <div class="workflow-icon">
+                            <span>Records</span>
+                        </div>
+                        <div class="workflow-arrow">→</div>
+                    </div>
+                    <div class="workflow-item">
+                        <div class="workflow-icon">
+                            <span>Imaging</span>
+                        </div>
+                        <div class="workflow-arrow">→</div>
+                    </div>
+                    <div class="workflow-item">
+                        <div class="workflow-icon">
+                            <span>Security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                .platform-features-container {
+                    display: flex;
+                    gap: 40px;
+                    margin: 40px 0;
+                    align-items: center;
+                }
+
+                .platform-image {
+                    flex: 1;
+                    max-width: 50%;
+                }
+
+                .platform-image img {
+                    width: 100%;
+                    border-radius: 10px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                }
+
+                .platform-features {
+                    flex: 1;
+                }
+
+                .platform-feature {
+                    margin-bottom: 30px;
+                }
+
+                .platform-feature h3 {
+                    color: #9D4EDD;
+                    font-size: 24px;
+                    margin-bottom: 10px;
+                }
+
+                .platform-feature p {
+                    font-size: 16px;
+                    line-height: 1.6;
+                }
+
+                .platform-workflow {
+                    display: none;
+                }
+
+                @media (max-width: 768px) {
+                    .platform-features-container {
+                        flex-direction: column;
+                    }
+
+                    .platform-image {
+                        max-width: 100%;
+                        margin-bottom: 30px;
+                    }
+                }
+            </style>
+        </section>
+
+        <section class="why-section">
+            <div class="container">
+                <h2>Why Legal Teams Choose VerixAI</h2>
+
+                <div class="why-cards">
+                    <div class="why-card">
+                        <h3>Structure</h3>
+                        <p>Transform chaotic medical records into organized, searchable case files</p>
+                    </div>
+                    <div class="why-card">
+                        <h3>Efficiency</h3>
+                        <p>Review cases up to 70% faster without sacrificing thoroughness</p>
+                    </div>
+                    <div class="why-card">
+                        <h3>Defendability</h3>
+                        <p>Create source-linked reports that stand up to scrutiny</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="comparison-section">
+            <div class="container">
+                <h2>Traditional vs Advanced</h2>
+
+                <div class="comparison-grid">
+                    <div class="comparison-header">Cost</div>
+                    <div class="comparison-cell">High manual labor costs</div>
+                    <div class="comparison-cell">70% reduction in review time</div>
+
+                    <div class="comparison-header">Time Around Files</div>
+                    <div class="comparison-cell">Days to weeks</div>
+                    <div class="comparison-cell">Hours</div>
+
+                    <div class="comparison-header">Quality</div>
+                    <div class="comparison-cell">Varies by reviewer</div>
+                    <div class="comparison-cell">Consistent, comprehensive analysis</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <h2>Frequently Asked <span>Questions</span></h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">What kinds of cases does VerixAI handle?</div>
+                    <div class="faq-answer">VerixAI is designed to handle all types of medico-legal cases, including personal injury, medical malpractice, workers' compensation, and disability claims. The platform is particularly effective for complex cases with extensive medical records.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How secure is your platform?</div>
+                    <div class="faq-answer">VerixAI employs bank-level encryption, SOC 2 compliance, and HIPAA-compliant data handling. All data is stored in secure, redundant servers with strict access controls to ensure your sensitive case information remains protected.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What is your pricing model?</div>
+                    <div class="faq-answer">We offer flexible subscription plans based on your firm's size and case volume, as well as per-case pricing options. Contact our sales team for a customized quote tailored to your specific needs.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do we onboard?</div>
+                    <div class="faq-answer">Our white-glove onboarding process includes system setup, data migration if needed, and comprehensive training for your team. A dedicated customer success manager will guide you through implementation and ensure a smooth transition.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What is your uptime?</div>
+                    <div class="faq-answer">VerixAI maintains a 99.9% uptime guarantee, with scheduled maintenance performed during off-peak hours. Our robust infrastructure ensures reliable access to your case files whenever you need them.</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/cormetrix-footer-logo.svg" alt="CorMetrix Logo">
+                    <p>Questions?</p>
+                    <a href="questions.html" class="btn btn-outline-light">Chat with Us</a>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="platform.html#why-section">Compliance</a></li>
+                            <li><a href="team.html">About Us</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="docs.html">Docs</a></li>
+                            <li><a href="questions.html">FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Coremetrix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const answer = this.nextElementSibling;
+                    answer.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

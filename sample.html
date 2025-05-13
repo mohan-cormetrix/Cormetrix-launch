@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CorMetrix - AI-Powered Intelligence for Modern Healthcare</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Header styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #6a2fad;
+            margin-left: 8px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a.active {
+            color: #6a2fad;
+        }
+
+        nav a.dropdown::after {
+            content: "▼";
+            font-size: 10px;
+            margin-left: 5px;
+            display: inline-block;
+        }
+
+        .cta-button {
+            background-color: #e6e0f3;
+            color: #6a2fad;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #d4c5f2;
+        }
+
+        .cta-button svg {
+            margin-left: 8px;
+        }
+
+        /* Hero section styles */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 10%;
+            background-color: #f0e9fc;
+            min-height: 80vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 550px;
+            z-index: 2;
+        }
+
+        .hero-breadcrumb {
+            color: #ff6b6b;
+            font-weight: 600;
+            margin-bottom: 30px;
+            font-size: 20px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            color: #6a2fad;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .primary-button {
+            background-color: #7de2d1;
+            color: #333;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .primary-button:hover {
+            background-color: #5fd0bd;
+        }
+
+        .secondary-button {
+            background-color: transparent;
+            color: #333;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            border: 2px solid #7de2d1;
+            transition: all 0.3s ease;
+        }
+
+        .secondary-button:hover {
+            background-color: rgba(125, 226, 209, 0.1);
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+
+        .hero-image-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #6a2fad;
+            border-radius: 30px;
+            bottom: -30px;
+            right: -30px;
+        }
+
+        .hero-image-main {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #ccc;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-image-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .icon {
+            position: absolute;
+            background-color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon svg {
+            width: 16px;
+            height: 16px;
+            color: #6a2fad;
+        }
+
+        .icon-1 {
+            top: 20%;
+            left: 10%;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .icon-2 {
+            top: 30%;
+            right: 15%;
+            animation: float 4s infinite ease-in-out 1s;
+        }
+
+        .icon-3 {
+            bottom: 25%;
+            left: 20%;
+            animation: float 6s infinite ease-in-out 0.5s;
+        }
+
+        .icon-4 {
+            bottom: 40%;
+            right: 10%;
+            animation: float 5s infinite ease-in-out 2s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        /* Features section styles */
+        .features {
+            padding: 80px 10%;
+            background-color: #fff;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        .features h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #000;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .feature-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: linear-gradient(180deg, #6a2fad 0%, #0b1a3a 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-icon {
+            margin-bottom: 25px;
+        }
+        
+        .feature-icon svg {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        
+        .feature-divider {
+            width: 2px;
+            height: 50px;
+            background-color: #7de2d1;
+            margin-bottom: 25px;
+        }
+        
+        .feature-card h4 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .feature-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Media queries */
+        @media screen and (max-width: 1200px) {
+            .hero {
+                padding: 40px 5%;
+            }
+
+            .hero-content {
+                max-width: 450px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero-image-container {
+                width: 400px;
+                height: 400px;
+            }
+            
+            .features {
+                padding: 60px 5%;
+            }
+            
+            .feature-cards {
+                gap: 20px;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            header {
+                padding: 15px 5%;
+            }
+
+            nav {
+                gap: 20px;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 40px 5% 80px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+                margin-bottom: 50px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image-container {
+                width: 350px;
+                height: 350px;
+            }
+            
+            .feature-cards {
+                flex-direction: column;
+            }
+            
+            .features h2 {
+                font-size: 36px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .hero-image-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .features {
+                padding: 40px 5%;
+            }
+            
+            .features h2 {
+                margin-bottom: 40px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-image-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .features h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 5C11.7157 5 5 11.7157 5 20C5 28.2843 11.7157 35 20 35C28.2843 35 35 28.2843 35 20C35 11.7157 28.2843 5 20 5Z" fill="#6A2FAD"/>
+                <path d="M25 15C25 17.7614 22.7614 20 20 20C17.2386 20 15 17.7614 15 15C15 12.2386 17.2386 10 20 10C22.7614 10 25 12.2386 25 15Z" fill="#FF6B6B"/>
+                <path d="M30 25C30 28.3137 25.5228 31 20 31C14.4772 31 10 28.3137 10 25C10 21.6863 14.4772 19 20 19C25.5228 19 30 21.6863 30 25Z" fill="#7DE2D1"/>
+            </svg>
+            <span class="logo-text">cormetrix</span>
+        </div>
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#" class="dropdown">Platform</a>
+            <a href="#" class="dropdown">Product</a>
+            <a href="#" class="dropdown">About Us</a>
+            <a href="#">Compliance</a>
+        </nav>
+        <a href="#" class="cta-button">
+            Book a Demo
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#6A2FAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="floating-icons">
+                <div class="icon icon-1">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.5 18.5L9.5 12.5L13.5 16.5L22 8" stroke="#6A2FAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="icon icon-2">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 5V12M12 12L15 9M12 12L9 9" stroke="#6A2FAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17.5 12C19.9853 12 22 14.0147 22 16.5C22 18.9853 19.9853 21 17.5 21H6.5C4.01472 21 2 18.9853 2 16.5C2 14.0147 4.01472 12 6.5 12" stroke="#6A2FAD" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="icon icon-3">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.5 12.5725L12 19.5L4.5 12.5725C3.9404 12.057 3.5 11.053 3.5 10.3255V5.85317C3.5 4.5449 4.5718 3.5 5.9046 3.5H18.0954C19.4282 3.5 20.5 4.5449 20.5 5.85317V10.3255C20.5 11.053 20.0596 12.057 19.5 12.5725Z" stroke="#6A2FAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="icon icon-4">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 3V21M12 3L4 11H20L12 3Z" stroke="#6A2FAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="hero-content">
+                <div class="hero-breadcrumb">HOME</div>
+                <h1>AI-Powered Intelligence for Modern Healthcare</h1>
+                <p>CorMetrix helps you manage complex medical data, streamline decisions, and take confident action—with AI you can trust.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="primary-button">See it in Action</a>
+                    <a href="#" class="secondary-button">About Us</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="hero-image-container">
+                    <div class="hero-image-bg"></div>
+                    <div class="hero-image-main">
+                        <img src="/api/placeholder/500/500" alt="Healthcare professional using CorMetrix AI technology with digital medical interface">
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section class="features">
+            <div class="container">
+                <h2>Delivering Insight When It Matters Most</h2>
+                
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 30V20M16 30V10M24 30V16M32 30V24" stroke="#7DE2D1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M24 10L32 18M32 10L24 18" stroke="#7DE2D1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>AI-Generated Data Analytics</h3>
+                        <div class="feature-divider"></div>
+                        <h4>Identify patterns. Flag risks. Visualize insights.</h4>
+                        <p>Machine learning highlights what matters—fast—across high-volume, multi-source data.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="10" cy="20" r="4" stroke="#7DE2D1" stroke-width="2"/>
+                                <circle cx="20" cy="14" r="4" stroke="#7DE2D1" stroke-width="2"/>
+                                <circle cx="30" cy="20" r="4" stroke="#7DE2D1" stroke-width="2"/>
+                                <path d="M10 24C10 27.3137 13.134 30 17 30H23C26.866 30 30 27.3137 30 24" stroke="#7DE2D1" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M20 10V4" stroke="#7DE2D1" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>End-to-End Workflows</h3>
+                        <div class="feature-divider"></div>
+                        <h4>Ingest. Organize. Decide.</h4>
+                        <p>Move seamlessly from raw data to clinical or legal decisions, without workflow gaps.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M28 30H8C6.34315 30 5 28.6569 5 27V13C5 11.3431 6.34315 10 8 10H28C29.6569 10 31 11.3431 31 13V19" stroke="#7DE2D1" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M31 24C31 22.3431 32.3431 21 34 21H36" stroke="#7DE2D1" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M20 19H14C13.4477 19 13 19.4477 13 20V22C13 22.5523 13.4477 23 14 23H20C20.5523 23 21 22.5523 21 22V20C21 19.4477 20.5523 19 20 19Z" stroke="#7DE2D1" stroke-width="2"/>
+                                <path d="M35 30C35 26.6863 32.3137 24 29 24C25.6863 24 23 26.6863 23 30C23 33.3137 25.6863 36 29 36C32.3137 36 35 33.3137 35 30Z" stroke="#7DE2D1" stroke-width="2"/>
+                                <path d="M33 30C33 27.7909 31.2091 26 29 26" stroke="#7DE2D1" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>Talk to Your Data</h3>
+                        <div class="feature-divider"></div>
+                        <h4>Ask. Verify. Trace.</h4>
+                        <p>Use natural language to query your data, validate outputs, and follow every source.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Simple dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Dropdown menu functionality would go here
+                    console.log('Dropdown clicked:', this.textContent.trim());
+                });
+            });
+        });
+    </script>
+</body>
+</html>

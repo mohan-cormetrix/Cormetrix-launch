@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform - CorMetrix</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Platform Page Specific Styles */
+        .platform-hero {
+            background-color: #fff;
+            padding: 80px 0;
+        }
+
+        .platform-hero .container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .platform-hero-content {
+            flex: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .platform-hero-content.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .platform-hero-image {
+            flex: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: 0.2s;
+        }
+
+        .platform-hero-image.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .platform-hero-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .platform-hero-title {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .platform-hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .platform-hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .purple-box {
+            background: linear-gradient(135deg, #9D4EDD, #6A0DAD);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .purple-box-content {
+            flex: 2;
+            color: white;
+        }
+
+        .purple-box p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+
+        .purple-accent {
+            flex: 1;
+            height: 100%;
+            background-color: #9D4EDD;
+            border-radius: 10px;
+            max-width: 100px;
+        }
+
+        .features-section {
+            padding: 60px 0;
+            background-color: #f8f8f8;
+        }
+
+        .features-section h2 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .feature-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            flex: 1;
+            background-color: #2A2A72;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-card h3 .icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-card p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .feature-card ul {
+            padding-left: 20px;
+        }
+
+        .feature-card li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .driven-section {
+            padding: 60px 0;
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .driven-section .container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .driven-content {
+            flex: 1;
+        }
+
+        .driven-image {
+            flex: 1;
+        }
+
+        .driven-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .driven-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .driven-section p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 400px;
+            background-color: #000;
+            border-radius: 15px;
+            margin: 60px 0;
+        }
+
+        .why-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .why-section h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: var(--text-color);
+        }
+
+        .why-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .why-card {
+            flex: 1;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+        }
+
+        .why-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .why-card:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .why-card:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+
+        .why-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .why-card p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .comparison-section {
+            padding: 60px 0;
+        }
+
+        .comparison-section h2 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .comparison-row {
+            display: contents;
+        }
+
+        .comparison-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .comparison-cell {
+            background-color: #F8F8F8;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .products-section {
+            padding: 60px 0;
+        }
+
+        .products-section h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .product-cards {
+            display: flex;
+            gap: 30px;
+        }
+
+        .product-card {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 200px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+        }
+
+        .product-card-content h3 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .platform-hero .container,
+            .driven-section .container {
+                flex-direction: column;
+            }
+
+            .feature-cards,
+            .why-cards,
+            .product-cards {
+                flex-direction: column;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-row {
+                display: grid;
+                grid-template-columns: 1fr;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+                  <a href="index.html">
+            <div class="logo">
+                <img src="images/cormetrix-logo.jpg" alt="CorMetrix Logo">
+                
+            </div>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown active">
+                        <a href="platform.html">Platform</a>
+                        <span class="dropdown-arrow">▼</span>
+                        <div class="dropdown-menu">
+                            <a href="platform.html" class="active">Overview</a>
+                            <a href="platform.html#features">Features</a>
+                            <a href="platform.html#technology">Technology</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Products</a>
+                        <span class="dropdown-arrow">▼</span>
+                        <div class="dropdown-menu">
+                            <a href="verixai.html">VerixAI</a>
+                            <a href="atriai.html">AtriAI</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="team.html">About Us</a>
+                        <span class="dropdown-arrow">▼</span>
+                        <div class="dropdown-menu">
+                            <a href="team.html">Meet the Team</a>
+                            <a href="team.html#mission">Our Mission</a>
+                            
+                        </div>
+                    </li>
+                    <li><a href="#why-section">Compliance</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+            <div class="cta-button">
+                <a href="#" class="btn btn-primary">Book a Demo <span class="arrow">→</span></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+   <section class="hero">
+    <div class="container hero-layout">
+        <div class="hero-image">
+            <div class="hero-image-container">
+                <div class="hero-image-bg"></div>
+                <div class="hero-image-main">
+                    <img src="images/legal-hammer.png" alt="CorMetrix Platform">
+                </div>
+            </div>
+        </div>
+        <div class="hero-content">
+ 
+            <h1>Building Better Data and <span>Smarter Outcomes</span>—Responsibly</h1>
+            <div class="purple-box">
+                <div class="purple-box-content">
+                    <p>At CorMetrix, we're building the next generation of AI-first healthcare and legal technology. Our platform combines the power of machine learning with expert-led design to create purpose-built products that deliver measurable results.</p>
+                </div>
+                <div class="purple-accent"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2>What Sets Our Platform Apart</h2>
+
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <h3><span class="icon"><i class="fas fa-user"></i></span> Human-First, Easy by Design</h3>
+                        <p>Our platform is built with the end user in mind, focusing on intuitive interfaces and workflows that enhance productivity.</p>
+                        <ul>
+                            <li>Intuitive interfaces designed by industry experts</li>
+                            <li>Customizable workflows that adapt to your processes</li>
+                            <li>Minimal training required to get started</li>
+                            <li>Continuous improvement based on user feedback</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span class="icon"><i class="fas fa-shield-alt"></i></span> Secure, Built to Exceed Standards</h3>
+                        <p>Security and compliance are foundational elements of our platform, not afterthoughts.</p>
+                        <ul>
+                            <li>HIPAA and SOC 2 compliant infrastructure</li>
+                            <li>End-to-end encryption for all data</li>
+                            <li>Regular security audits and penetration testing</li>
+                            <li>Granular access controls and audit logging</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="technology" class="driven-section">
+            <div class="container">
+                <div class="driven-content">
+                    <h2>Driven by People, Backed by AI</h2>
+                    <p>Our platform combines human expertise with advanced AI to deliver solutions that understand the nuances of complex domains. We believe that AI should augment human capabilities, not replace them.</p>
+                    <p>By focusing on specific use cases and working closely with domain experts, we've built a platform that delivers meaningful insights and automates tedious tasks—allowing professionals to focus on what matters most.</p>
+                    <a href="#" class="btn btn-outline-light">Learn More</a>
+                </div>
+                <div class="driven-image">
+                    <img src="images/laptop.png" alt="AI in Healthcare">
+                </div>
+            </div>
+        </section>
+
+        <div class="video-placeholder">
+            <!-- Video will go here -->
+        </div>
+
+        <section id="why-section" class="why-section">
+            <div class="container">
+                <h2>Why Legal Teams Choose VerixAI</h2>
+
+                <div class="why-cards">
+                    <div class="why-card">
+                        <h3>Structure</h3>
+                        <p>Transform chaotic medical records into organized, searchable case files</p>
+                    </div>
+                    <div class="why-card">
+                        <h3>Efficiency</h3>
+                        <p>Review cases up to 70% faster without sacrificing thoroughness</p>
+                    </div>
+                    <div class="why-card">
+                        <h3>Defendability</h3>
+                        <p>Create source-linked reports that stand up to scrutiny</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="comparison-section">
+            <div class="container">
+                <h2>Traditional vs Advanced</h2>
+
+                <div class="comparison-grid">
+                    <div class="comparison-header">Cost</div>
+                    <div class="comparison-cell">High manual labor costs</div>
+                    <div class="comparison-cell">70% reduction in review time</div>
+
+                    <div class="comparison-header">Time Around Files</div>
+                    <div class="comparison-cell">Days to weeks</div>
+                    <div class="comparison-cell">Hours</div>
+
+                    <div class="comparison-header">Quality</div>
+                    <div class="comparison-cell">Varies by reviewer</div>
+                    <div class="comparison-cell">Consistent, comprehensive analysis</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-section">
+            <div class="container">
+                <h2>Purpose-Built Products</h2>
+
+                <div class="product-cards">
+                    <a href="verixai.html" class="product-card">
+                        <img src="images/verixai.jpg" alt="Medico-Legal">
+                        <div class="product-card-content">
+                            <h3>VerixAI - Medico-Legal</h3>
+                        </div>
+                    </a>
+                    <a href="atriai.html" class="product-card">
+                        <img src="images/atriai.jpg" alt="Healthcare">
+                        <div class="product-card-content">
+                            <h3>AtriAI - Healthcare</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/cormetrix-footer-logo.svg" alt="CorMetrix Logo">
+                    <p>Questions?</p>
+                    <a href="questions.html" class="btn btn-outline-light">Chat with Us</a>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#why-section">Compliance</a></li>
+                            <li><a href="team.html">About Us</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="docs.html">Docs</a></li>
+                            <li><a href="questions.html">FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Coremetrix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

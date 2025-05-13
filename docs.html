@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - CorMetrix</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .docs-hero {
+            background-color: var(--light-purple);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .docs-hero h1 {
+            color: var(--primary-color);
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .docs-content {
+            padding: 60px 0;
+        }
+
+        .docs-content .container {
+            display: flex;
+            gap: 40px;
+        }
+
+        .docs-sidebar {
+            width: 280px;
+            position: sticky;
+            top: 100px;
+            align-self: flex-start;
+            flex-shrink: 0;
+        }
+
+        .docs-main {
+            flex: 1;
+            min-width: 0; /* Prevents content from overflowing */
+        }
+
+        .docs-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .docs-nav-item {
+            margin-bottom: 5px;
+        }
+
+        .docs-nav-item a {
+            display: block;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .docs-nav-item a:hover, .docs-nav-item a.active {
+            background-color: var(--light-purple);
+            color: var(--primary-color);
+        }
+
+        .docs-nav-section {
+            margin-bottom: 20px;
+        }
+
+        .docs-nav-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            padding-left: 15px;
+        }
+
+        .docs-section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            width: 100%;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        .docs-section:last-child {
+            border-bottom: none;
+        }
+
+        .docs-section h2 {
+            color: var(--primary-color);
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .docs-section h3 {
+            font-size: 20px;
+            margin: 25px 0 15px;
+            color: var(--text-color);
+        }
+
+        .docs-section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .docs-section ul, .docs-section ol {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .docs-section li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .docs-section code {
+            background-color: #f5f5f5;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        .docs-section pre {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            max-width: 100%;
+            white-space: pre-wrap;
+        }
+
+        .docs-section pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .docs-section .note {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .docs-section .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .docs-content .container {
+                flex-direction: column;
+            }
+
+            .docs-sidebar {
+                width: 100%;
+                margin-bottom: 30px;
+                position: static;
+            }
+
+            .docs-main {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+                  <a href="index.html">
+            <div class="logo">
+                <img src="images/cormetrix-logo.jpg" alt="CorMetrix Logo">
+                
+            </div>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="platform.html">Platform</a>
+                        <span class="dropdown-arrow">▼</span>
+                        <div class="dropdown-menu">
+                            <a href="platform.html">Overview</a>
+                            <a href="platform.html#features">Features</a>
+                            <a href="platform.html#technology">Technology</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Products</a>
+                        <span class="dropdown-arrow">▼</span>
+                        <div class="dropdown-menu">
+                            <a href="verixai.html">VerixAI</a>
+                            <a href="atriai.html">AtriAI</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="team.html">About Us</a>
+                        <span class="dropdown-arrow">▼</span>
+                        <div class="dropdown-menu">
+                            <a href="team.html">Meet the Team</a>
+                            <a href="team.html#mission">Our Mission</a>
+                            
+                        </div>
+                    </li>
+                    <li><a href="platform.html#why-section">Compliance</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+            <div class="cta-button">
+                <a href="#" class="btn btn-primary">Book a Demo <span class="arrow">→</span></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="docs-hero">
+            <div class="container">
+                <h1>Documentation</h1>
+                <p>Comprehensive guides and resources for CorMetrix products</p>
+            </div>
+        </section>
+
+        <section class="docs-content">
+            <div class="container">
+                <div class="docs-sidebar">
+                    <div class="docs-nav-section">
+                        <div class="docs-nav-title">Getting Started</div>
+                        <ul class="docs-nav">
+                            <li class="docs-nav-item"><a href="#introduction" class="active">Introduction</a></li>
+                            <li class="docs-nav-item"><a href="#quick-start">Quick Start Guide</a></li>
+                            <li class="docs-nav-item"><a href="#installation">Installation</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="docs-nav-section">
+                        <div class="docs-nav-title">Platform</div>
+                        <ul class="docs-nav">
+                            <li class="docs-nav-item"><a href="#platform-overview">Platform Overview</a></li>
+                            <li class="docs-nav-item"><a href="#api-reference">API Reference</a></li>
+                            <li class="docs-nav-item"><a href="#integrations">Integrations</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="docs-nav-section">
+                        <div class="docs-nav-title">Products</div>
+                        <ul class="docs-nav">
+                            <li class="docs-nav-item"><a href="#verixai">VerixAI Documentation</a></li>
+                            <li class="docs-nav-item"><a href="#atriai">AtriAI Documentation</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="docs-main">
+                    <div id="introduction" class="docs-section">
+                        <h2>Introduction</h2>
+                        <p>Welcome to the CorMetrix documentation. This comprehensive guide will help you get started with our platform and products, providing detailed information on installation, configuration, and usage.</p>
+
+                        <div class="note">
+                            <strong>Note:</strong> This documentation is regularly updated. Make sure you're viewing the latest version.
+                        </div>
+
+                        <h3>About CorMetrix</h3>
+                        <p>CorMetrix is a healthcare and legal technology company that builds AI-powered solutions to help professionals make better decisions. Our platform turns complex data into structured intelligence that improves with every case.</p>
+                    </div>
+
+                    <div id="quick-start" class="docs-section">
+                        <h2>Quick Start Guide</h2>
+                        <p>Get up and running with CorMetrix in minutes:</p>
+
+                        <ol>
+                            <li>Sign up for a CorMetrix account</li>
+                            <li>Choose your product (VerixAI or AtriAI)</li>
+                            <li>Complete the onboarding process</li>
+                            <li>Upload your first case or patient data</li>
+                            <li>Start using the platform</li>
+                        </ol>
+
+                        <h3>System Requirements</h3>
+                        <p>CorMetrix is a cloud-based platform that works in any modern web browser. For optimal performance, we recommend:</p>
+
+                        <ul>
+                            <li>Chrome, Firefox, Safari, or Edge (latest versions)</li>
+                            <li>Minimum 4GB RAM</li>
+                            <li>High-speed internet connection</li>
+                            <li>Screen resolution of 1280x800 or higher</li>
+                        </ul>
+                    </div>
+
+                    <div id="installation" class="docs-section">
+                        <h2>Installation</h2>
+                        <p>As a cloud-based solution, CorMetrix requires no installation on your local systems. Simply access the platform through your web browser at <a href="#">app.cormetrix.com</a>.</p>
+
+                        <h3>For Enterprise Customers</h3>
+                        <p>Enterprise customers with on-premises requirements should contact our implementation team for detailed deployment instructions.</p>
+                    </div>
+
+                    <div id="platform-overview" class="docs-section">
+                        <h2>Platform Overview</h2>
+                        <p>The CorMetrix platform is built on a secure, scalable architecture designed to handle complex healthcare and legal data. Our platform consists of several key components:</p>
+
+                        <ul>
+                            <li><strong>Data Ingestion Layer</strong> - Securely imports and processes documents, images, and structured data</li>
+                            <li><strong>AI Processing Engine</strong> - Analyzes and extracts meaningful information from raw data</li>
+                            <li><strong>User Interface</strong> - Intuitive web-based interface for interacting with the platform</li>
+                            <li><strong>API Layer</strong> - Secure REST APIs for integration with external systems</li>
+                        </ul>
+
+                        <h3>Security Features</h3>
+                        <p>Security is built into every layer of our platform:</p>
+
+                        <ul>
+                            <li>End-to-end encryption for all data in transit and at rest</li>
+                            <li>Role-based access control with fine-grained permissions</li>
+                            <li>Comprehensive audit logging of all system activities</li>
+                            <li>Regular security assessments and penetration testing</li>
+                        </ul>
+                    </div>
+
+                    <div id="api-reference" class="docs-section">
+                        <h2>API Reference</h2>
+                        <p>Our REST API allows you to integrate CorMetrix functionality into your existing systems. All API endpoints are secured using OAuth 2.0.</p>
+
+                        <h3>Authentication</h3>
+                        <p>To authenticate with the API, you need to obtain an access token:</p>
+
+                        <pre><code>POST /api/v1/auth/token
+Content-Type: application/json
+
+{
+  "client_id": "your_client_id",
+  "client_secret": "your_client_secret",
+  "grant_type": "client_credentials"
+}</code></pre>
+
+                        <h3>Example API Call</h3>
+                        <p>Here's an example of how to retrieve a list of cases:</p>
+
+                        <pre><code>GET /api/v1/cases
+Authorization: Bearer your_access_token</code></pre>
+
+                        <div class="note">
+                            <strong>Note:</strong> For detailed API documentation, please refer to our <a href="#">API Documentation Portal</a>.
+                        </div>
+                    </div>
+
+                    <div id="integrations" class="docs-section">
+                        <h2>Integrations</h2>
+                        <p>CorMetrix integrates with a wide range of healthcare and legal systems:</p>
+
+                        <ul>
+                            <li><strong>EHR Systems</strong> - Epic, Cerner, Allscripts, and more</li>
+                            <li><strong>Imaging Systems</strong> - PACS, VNA, and other DICOM-compatible systems</li>
+                            <li><strong>Document Management</strong> - SharePoint, Box, Dropbox, Google Drive</li>
+                            <li><strong>Legal Case Management</strong> - Clio, PracticePanther, and custom systems</li>
+                        </ul>
+
+                        <p>For custom integration requirements, please contact our implementation team.</p>
+                    </div>
+
+                    <div id="verixai" class="docs-section">
+                        <h2>VerixAI Documentation</h2>
+                        <p>VerixAI is our medico-legal solution designed to help legal teams review and analyze medical records more efficiently.</p>
+
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li><strong>Unified Cloud-Based Platform</strong> - Consolidates data and imaging into one unified platform</li>
+                            <li><strong>Automated Chronologies</strong> - Generates accurate medical chronologies within minutes</li>
+                            <li><strong>Natural Language Queries</strong> - Ask questions about cases in plain English</li>
+                        </ul>
+
+                        <h3>Getting Started with VerixAI</h3>
+                        <p>To get started with VerixAI, follow these steps:</p>
+
+                        <ol>
+                            <li>Log in to your CorMetrix account</li>
+                            <li>Select VerixAI from the product dashboard</li>
+                            <li>Create a new case and upload documents</li>
+                            <li>Wait for the AI to process the documents</li>
+                            <li>Start exploring the case data</li>
+                        </ol>
+                    </div>
+
+                    <div id="atriai" class="docs-section">
+                        <h2>AtriAI Documentation</h2>
+                        <p>AtriAI is our healthcare solution focused on left atrial appendage occlusion (LAAO) procedures.</p>
+
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li><strong>Comprehensive Workflow</strong> - Manages the entire LAAO procedure workflow</li>
+                            <li><strong>AI-Powered Analysis</strong> - Analyzes imaging data to assist with device selection</li>
+                            <li><strong>Automated Documentation</strong> - Generates procedure reports and documentation</li>
+                        </ul>
+
+                        <h3>Getting Started with AtriAI</h3>
+                        <p>To get started with AtriAI, follow these steps:</p>
+
+                        <ol>
+                            <li>Log in to your CorMetrix account</li>
+                            <li>Select AtriAI from the product dashboard</li>
+                            <li>Create a new patient record</li>
+                            <li>Upload imaging studies and patient data</li>
+                            <li>Start using the workflow tools</li>
+                        </ol>
+
+                        <div class="warning">
+                            <strong>Important:</strong> AtriAI is designed to assist healthcare professionals but does not replace clinical judgment. Always verify all information and recommendations.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/cormetrix-footer-logo.svg" alt="CorMetrix Logo">
+                    <p>Questions?</p>
+                    <a href="questions.html" class="btn btn-outline-light">Chat with Us</a>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="platform.html#why-section">Compliance</a></li>
+                            <li><a href="team.html">About Us</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="docs.html">Docs</a></li>
+                            <li><a href="questions.html">FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Coremetrix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

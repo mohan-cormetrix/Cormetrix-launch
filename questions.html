@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions - CorMetrix</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .questions-hero {
+            background-color: var(--light-purple);
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .questions-hero h1 {
+            color: var(--primary-color);
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .questions-content {
+            background-color: #fff;
+            padding: 60px 0;
+        }
+        
+        .questions-content .container {
+            max-width: 800px;
+        }
+        
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            background-color: #f5f5f5;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .faq-section {
+            margin-bottom: 40px;
+        }
+        
+        .faq-section h2 {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        
+        .faq-question:after {
+            content: "+";
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+        
+        .faq-question.active:after {
+            content: "-";
+        }
+        
+        .faq-answer {
+            display: none;
+            padding: 10px 0;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        .contact-section {
+            background-color: var(--light-purple);
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .contact-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .contact-section p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html">
+            <div class="logo">
+                <img src="images/cormetrix-logo.jpg" alt="CorMetrix Logo">
+                
+            </div>
+                </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="platform.html">Platform</a>
+                        <span class="dropdown-arrow">▼</span>
+                        <div class="dropdown-menu">
+                            <a href="platform.html">Overview</a>
+                            <a href="platform.html#features">Features</a>
+                            <a href="platform.html#technology">Technology</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Products</a>
+                        <span class="dropdown-arrow">▼</span>
+                        <div class="dropdown-menu">
+                            <a href="verixai.html">VerixAI</a>
+                            <a href="atriai.html">AtriAI</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="team.html">About Us</a>
+                        <span class="dropdown-arrow">▼</span>
+                        <div class="dropdown-menu">
+                            <a href="team.html">Meet the Team</a>
+                            <a href="team.html#mission">Our Mission</a>
+                            
+                        </div>
+                    </li>
+                    <li><a href="platform.html#why-section">Compliance</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+            <div class="cta-button">
+                <a href="#" class="btn btn-primary">Book a Demo <span class="arrow">→</span></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="questions-hero">
+            <div class="container">
+                <h1>Frequently Asked Questions</h1>
+                <p>Find answers to common questions about our platform and products</p>
+            </div>
+        </section>
+
+        <section class="questions-content">
+            <div class="container">
+                <div class="faq-categories">
+                    <button class="category-btn active">All</button>
+                    <button class="category-btn">Platform</button>
+                    <button class="category-btn">VerixAI</button>
+                    <button class="category-btn">AtriAI</button>
+                    <button class="category-btn">Pricing</button>
+                </div>
+
+                <div class="faq-section">
+                    <h2>General Questions</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">What is CorMetrix?</div>
+                        <div class="faq-answer">CorMetrix is a healthcare and legal technology company that builds AI-powered solutions to help professionals make better decisions. Our platform turns complex data into structured intelligence that improves with every case.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">How does your AI technology work?</div>
+                        <div class="faq-answer">Our AI technology combines machine learning, natural language processing, and expert-led design to analyze and structure complex information. It learns from each case to continuously improve accuracy and relevance, while always keeping humans in the decision-making loop.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Is my data secure with CorMetrix?</div>
+                        <div class="faq-answer">Yes, security is our top priority. We use enterprise-grade encryption, maintain HIPAA and SOC 2 compliance, and implement strict access controls. Your data is never used to train general AI models, and we maintain complete audit trails of all system access.</div>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h2>Product Questions</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">What is VerixAI?</div>
+                        <div class="faq-answer">VerixAI is our medico-legal solution that helps legal teams review medical records more efficiently. It extracts key information, organizes case files, and helps you create comprehensive, source-linked reports that stand up to scrutiny.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">What is AtriAI?</div>
+                        <div class="faq-answer">AtriAI is our healthcare solution focused on left atrial appendage occlusion (LAAO) procedures. It streamlines case management by organizing patient data, automating documentation, and providing clinical decision support throughout the entire workflow.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Can your products integrate with our existing systems?</div>
+                        <div class="faq-answer">Yes, our platform is designed to integrate seamlessly with your existing EHR, imaging systems, and document management solutions through secure APIs. We work closely with your IT team during implementation to ensure smooth integration.</div>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h2>Pricing & Support</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">What is your pricing model?</div>
+                        <div class="faq-answer">We offer flexible subscription plans based on your organization's size and needs. We also provide per-case pricing options for some products. Contact our sales team for a customized quote tailored to your specific requirements.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">What kind of support do you provide?</div>
+                        <div class="faq-answer">We provide comprehensive support including implementation assistance, training, and ongoing technical support. Our customer success team is available via email, phone, and chat to help you get the most out of our platform.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">How long does implementation take?</div>
+                        <div class="faq-answer">Implementation typically takes 2-4 weeks depending on the complexity of your environment and integration requirements. Our team works closely with you throughout the process to ensure a smooth transition.</div>
+                    </div>
+                </div>
+
+                <div class="contact-section">
+                    <h3>Still have questions?</h3>
+                    <p>Our team is here to help. Contact us for personalized assistance.</p>
+                    <a href="#" class="btn btn-primary">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/cormetrix-footer-logo.svg" alt="CorMetrix Logo">
+                    <p>Questions?</p>
+                    <a href="questions.html" class="btn btn-outline-light">Chat with Us</a>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="platform.html#why-section">Compliance</a></li>
+                            <li><a href="team.html">About Us</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="docs.html">Docs</a></li>
+                            <li><a href="questions.html">FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Coremetrix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const answer = this.nextElementSibling;
+                    answer.classList.toggle('active');
+                });
+            });
+            
+            // Category filter functionality
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Filter functionality would go here in a real implementation
+                });
+            });
+        });
+    </script>
+</body>
+</html>

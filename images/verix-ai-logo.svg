@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150" height="50" viewBox="0 0 150 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M15.5 10L25 30H6L15.5 10Z" fill="#9D4EDD"/>
+  <path d="M35 10H30V30H35V10Z" fill="#9D4EDD"/>
+  <path d="M40 10H45L55 30H50L48 25H37L35 30H30L40 10ZM46 20L42.5 13L39 20H46Z" fill="#9D4EDD"/>
+  <path d="M60 10H65V25H75V30H60V10Z" fill="#9D4EDD"/>
+  <path d="M80 10H85V30H80V10Z" fill="#9D4EDD"/>
+  <path d="M95 10H90V30H95V10Z" fill="#9D4EDD"/>
+  <path d="M100 10H105L115 20V10H120V30H115L105 20V30H100V10Z" fill="#9D4EDD"/>
+  <text x="75" y="45" font-family="Arial" font-size="10" text-anchor="middle" fill="#666666">CorMetrix</text>
+</svg>
